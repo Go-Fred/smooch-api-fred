@@ -8,9 +8,10 @@ dotenv.load();
 const express = require('express');
 const bodyParser = require('body-parser');
 const Smooch = require('smooch-core');
+var path = require('path');
 
 // Config
-const PORT = 8001;
+const PORT = 8002;
 const KEY_ID = process.env.KEY_ID;
 const SECRET = process.env.SECRET;
 
@@ -50,6 +51,13 @@ app.post('/messages', function(req, res) {
           });
   }
 });
+
+// Route the home Get request to index.html
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req,res) =>{
+  res.sendFile(path.join(__dirname +'/public/index.html'))
+})
 
 // Listen on port
 app.listen(PORT, () => {
