@@ -1,10 +1,6 @@
 'use strict';
 
-
 var path = require('path');
-
-'use strict';
-
 var dotenv = require('dotenv');
 dotenv.config();
 dotenv.load();
