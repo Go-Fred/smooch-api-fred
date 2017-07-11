@@ -31,21 +31,22 @@ root: ~/
 # post: tmux -CC attach -t webhooktest
 
 windows:
-  - server:
+  - ngrok:
       layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - principale:
-          - cd smooch-api
-          - git checkout webhook-example
-          - nodemon index.js
-        - ngrok http 8002
+          - ngrok http 8002
         - URLs:
           - open -a "Google Chrome" http://localhost:8002
           - open -a "Google Chrome" http://app.smooch.io
           - cd smooch-api
           - git checkout webhook-example
           - vim config-server.txt
-        - Free:
+  - server:
+    - cd smooch-api
+    - git checkout webhook-example
+    - nodemon index.js
+  - free:
